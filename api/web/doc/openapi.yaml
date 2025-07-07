@@ -1,0 +1,563 @@
+openapi: 3.0.3
+info:
+  title: TestTask
+  contact:
+    email: sdkigor@gmail.com
+  version: 1.0.2
+servers:
+  - url: https://test.sdkigor.ru/api/
+tags:
+  - name: languages
+    description: Язык
+  - name: genres
+    description: Жанр
+  - name: countries
+    description: Страна
+  - name: authors
+    description: Автор
+  - name: books
+    description: Книга
+paths:
+  /languages/:
+    get:
+      tags:
+        - languages
+      summary: Получить список языков
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        '200':
+          description: Список языков
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+    post:
+      tags:
+        - languages
+      summary: Добавить запись
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+        required: true
+      responses:
+        '200':
+          description: Запись сохранена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+
+  /languages/{id}:
+    get:
+      tags:
+        - languages
+      summary: Получить данные записи
+      parameters:
+        - name: id
+          in: path
+          description: получение записи по id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные записи
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - languages
+      summary: Обновить запись
+      parameters:
+        - name: id
+          in: path
+          description: Обновить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /genres/:
+    get:
+      tags:
+        - genres
+      summary: Список жанров
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      responses:
+        '200':
+          description: Список жанров
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+    post:
+      tags:
+        - genres
+      summary: Добавить жанр
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Genre'
+        required: true
+      responses:
+        '200':
+          description: Успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+  /genres/{id}:
+    get:
+      tags:
+        - genres
+      summary: Получить данные записи
+      parameters:
+        - name: id
+          in: path
+          description: получение записи по id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные записи
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - genres
+      summary: Обновить запись
+      parameters:
+        - name: id
+          in: path
+          description: Обновить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /authors/:
+    get:
+      tags:
+        - authors
+      summary:  Список авторов
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              country_id:
+                type: integer
+      responses:
+        '200':
+          description: Список авторов
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    post:
+      tags:
+        - authors
+      summary: Добавить автора
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      responses:
+        '200':
+          description: Успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+  /authors/{id}:
+    get:
+      tags:
+        - authors
+      summary: Получить данные записи
+      parameters:
+        - name: id
+          in: path
+          description: получение записи по id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные записи
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - authors
+      summary: Обновить запись
+      parameters:
+        - name: id
+          in: path
+          description: Обновить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - authors
+      summary: Удалить запись
+      parameters:
+        - name: id
+          in: path
+          description: Удалить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genre'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /books/:
+    get:
+      tags:
+        - books
+      summary:  Список книг
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              author_id:
+                type: integer
+              language_id:
+                type: integer
+              genre_id:
+                type: integer
+      responses:
+        '200':
+          description: Список книг
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+    post:
+      tags:
+        - books
+      summary: Добавить книгу
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      responses:
+        '200':
+          description: Успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+  /books/{id}:
+    get:
+      tags:
+        - books
+      summary: Получить данные записи
+      parameters:
+        - name: id
+          in: path
+          description: получение записи по id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные записи
+          content:
+            application/json:
+              schema:
+                type: string
+
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      tags:
+        - books
+      summary: Обновить запись
+      parameters:
+        - name: id
+          in: path
+          description: Обновить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - books
+      summary: Удалить запись
+      parameters:
+        - name: id
+          in: path
+          description: Удалить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                type: string
+                example: 1
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Language:
+      required:
+        - name
+      type: object
+      example:
+        {
+          id: 1,
+          name: Русский
+        }
+      properties:
+        name:
+          type: string
+          example: Русский
+          description: Название языка
+        id:
+          type: integer
+          format: int
+          example: 1
+    Genre:
+      required:
+        - name
+      type: object
+      example: {
+        id: 1,
+        name: Роман
+      }
+      properties:
+        id:
+          type: integer
+          format: int
+          example: 1
+        name:
+          type: string
+          example: Роман
+          description: Название жанра
+    Country:
+      required:
+        - name
+      type: object
+      example: {
+        id: 1,
+        name: Франция
+      }
+      properties:
+        id:
+          type: integer
+          format: int
+          example: 1
+        name:
+          type: string
+          example: Франция
+          description: Название страны
+    Author:
+      required:
+        - name
+        - date_of_birth
+        - country_id
+      type: object
+      example: {
+        id: 1,
+        name: Михаил Афанасьевич Булгаков,
+        date_of_birth: 1916-10-31,
+        country_id: 2,
+      }
+      properties:
+        id:
+          type: integer
+          format: int
+          example: 1
+        name:
+          type: string
+          example: Михаил Афанасьевич Булгаков
+          description: Полное имя автора
+        date_of_birth:
+          type: string
+          example: 1916-10-31
+          description: Дата рождения
+        country_id:
+          type: integer
+          example: 2
+          description: ID станы из справочника Country
+    Book:
+      required:
+        - name
+        - author_id
+        - pages
+        - language_id
+        - genre_id
+        - description
+      type: object
+      example: {
+        id: 1,
+        name: Мастер и маргарита,
+        author_id: 1,
+        pages: 521,
+        language_id: 2,
+        genre_id: 1,
+        description: Роман Михаила Афанасьевича Булгакова,
+      }
+      properties:
+        id:
+          type: integer
+          format: int
+          example: 1
+        name:
+          type: string
+          example: Мастер и маргарита
+          description: Название книги
+        author_id:
+          type: integer
+          format: int
+          example: 1
+          description: ID автора
+        pages:
+          type: integer
+          format: int
+          example: 521
+          description: Количество страниц
+        language_id:
+          type: integer
+          format: int
+          example: 2
+          description: ID языка
+        genre_id:
+          type: integer
+          format: int
+          example: 1
+          description: ID Жанра
+        description:
+          type: string
+          example: роман Михаила Афанасьевича Булгакова
+          description: Описание книги
+    Error:
+      example: {
+        name: 'Not Found',
+        message	: "Object not found",
+        code: 0,
+        status: 404,
+        type: yii\\web\\NotFoundHttpException,
+      }

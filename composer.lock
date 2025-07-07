@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d518d6f837cce6905220f5864c0d95ea",
+    "content-hash": "8fd920f286bc0b7f9b33a1ea34fc227f",
     "packages": [
+        {
+            "name": "bestyii/yii2-gii-rest",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestyii/yii2-gii-rest.git",
+                "reference": "28c7d54ba3e41dc57d6e4ea1479ec1a392ea9b41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestyii/yii2-gii-rest/zipball/28c7d54ba3e41dc57d6e4ea1479ec1a392ea9b41",
+                "reference": "28c7d54ba3e41dc57d6e4ea1479ec1a392ea9b41",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "yiisoft/yii2-gii": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bestyii\\giiRest\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "ez",
+                    "email": "ez@bestyii.com"
+                }
+            ],
+            "description": "RESTful generator for gii",
+            "keywords": [
+                "extension",
+                "gii",
+                "oas",
+                "rest",
+                "swagger",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/bestyii/yii2-gii-rest/issues",
+                "source": "https://github.com/bestyii/yii2-gii-rest/tree/master"
+            },
+            "time": "2020-03-09T07:57:15+00:00"
+        },
         {
             "name": "bower-asset/bootstrap",
             "version": "v5.3.7",
@@ -2528,16 +2579,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.13.2",
+            "version": "1.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "d25e62e636b0a9b01e3bdebb7823b474876dd829"
+                "reference": "faed855a7b5f4d4637717c2b3863e277116beb36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/d25e62e636b0a9b01e3bdebb7823b474876dd829",
-                "reference": "d25e62e636b0a9b01e3bdebb7823b474876dd829",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/faed855a7b5f4d4637717c2b3863e277116beb36",
+                "reference": "faed855a7b5f4d4637717c2b3863e277116beb36",
                 "shasum": ""
             },
             "require": {
@@ -2576,7 +2627,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.2"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.3"
             },
             "funding": [
                 {
@@ -2584,7 +2635,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-04T14:07:32+00:00"
+            "time": "2025-07-05T12:25:42+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -5494,7 +5545,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4.0"
+        "php": ">=8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
