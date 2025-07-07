@@ -15,7 +15,7 @@ class m250705_090637_create_book_table extends Migration
         $this->createTable('{{%book}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->notNull(),
-            'author_id'=>$this->bigInteger()->notNull(),
+            'author_id'=>$this->integer()->notNull(),
             'language_id' => $this->integer()->notNull(),
             'genre_id' => $this->integer()->notNull(),
             'pages' => $this->integer()->notNull(),
