@@ -110,6 +110,99 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+
+  /countries/:
+    get:
+      tags:
+        - countries
+      summary: Получить список стран
+      parameters:
+        - in: query
+          name: filter
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        '200':
+          description: Список стран
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+    post:
+      tags:
+        - countries
+      summary: Добавить запись
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+        required: true
+      responses:
+        '200':
+          description: Запись сохранена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+
+  /countries/{id}:
+    get:
+      tags:
+        - countries
+      summary: Получить данные записи
+      parameters:
+        - name: id
+          in: path
+          description: получение записи по id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Данные записи
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    put:
+      tags:
+        - countries
+      summary: Обновить запись
+      parameters:
+        - name: id
+          in: path
+          description: Обновить запись по id
+      responses:
+        '200':
+          description: Изменения сохранены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        '404':
+          description: Ошибка запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /genres/:
     get:
       tags:
