@@ -56,7 +56,7 @@ class m250705_090637_create_book_table extends Migration
         $this->createIndex(
             'idx-book-language_id',
             'book',
-            'author_id'
+            'language_id'
         );
         $this->addForeignKey(
             'fk-book-language_id',
